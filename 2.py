@@ -1,2 +1,2 @@
-a = 'Slipknot.Placebo.mp3.wav'
-print(a.rsplit('.',1))
+import os
+print(os.getcwd())

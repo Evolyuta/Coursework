@@ -37,10 +37,14 @@ def format_db(x, pos=None):
     return int(db)
 
 
-"""Список wav файлов"""
-path = "/home/evolyuta/PycharmProjects/Coursework/Music"
+path = os.getcwd() + "/Music"
 name = os.listdir(path)
+
+
+"""Convert from mp3 to wav"""
+
 tempname = []
+
 for i in range(len(name)):
     if os.path.isfile(path + "/" + name[i]):
         splitmusic = name[i].rsplit('.')
