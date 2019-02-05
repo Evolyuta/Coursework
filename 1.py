@@ -75,12 +75,12 @@ for i in range(len(name)):
 name = os.listdir(path)
 print(len(name))
 
-for i in range(len(name)):
-    if os.path.isfile(path + "/" + name[i]):
-        splitmusic = name[i].rsplit('.',1)
-        if splitmusic[1] == "wav":
-            tempname.append(name[i])
-name = tempname
+#for i in range(len(name)):
+ #   if os.path.isfile(path + "/" + name[i]):
+  #      splitmusic = name[i].rsplit('.',1)
+   #     if splitmusic[1] == "wav":
+    #        tempname.append(name[i])
+#name = tempname
 for i in range(len(name)):
     splitmusic = name[i].rsplit('.')
     name[i] = splitmusic[0]
