@@ -37,6 +37,9 @@ def format_db(x, pos=None):
     return int(db)
 
 
+
+
+
 path = os.getcwd() + "/Music"
 name = os.listdir(path)
 
@@ -47,18 +50,35 @@ tempname = []
 
 for i in range(len(name)):
     if os.path.isfile(path + "/" + name[i]):
-        splitmusic = name[i].rsplit('.')
+        splitmusic = name[i].rsplit('.',1)
         if splitmusic[-1] == "mp3":
             sound = AudioSegment.from_mp3(path + "/" + name[i])
             sound.export(path + "/" + splitmusic[0] + ".wav", format="wav")
+
+
+
+"""Removing mp3 files"""
 
 name = os.listdir(path)
 print(len(name))
 
 for i in range(len(name)):
     if os.path.isfile(path + "/" + name[i]):
-        splitmusic = name[i].rsplit('.')
-        if splitmusic[-1] == "wav":
+        splitmusic = name[i].rsplit('.',1)
+        if splitmusic[1] == "mp3":
+            os.remove('Music/'+name[i])
+
+
+
+
+
+name = os.listdir(path)
+print(len(name))
+
+for i in range(len(name)):
+    if os.path.isfile(path + "/" + name[i]):
+        splitmusic = name[i].rsplit('.',1)
+        if splitmusic[1] == "wav":
             tempname.append(name[i])
 name = tempname
 for i in range(len(name)):

@@ -1,2 +1,2 @@
-import os
-os.remove('Music/Oomph! - Bis Der Spiegel Zerbricht.mp3')
+a = 'Slipknot.Placebo.mp3.wav'
+print(a.rsplit('.',1))
