@@ -60,7 +60,6 @@ for i in range(len(name)):
 """Removing mp3 files"""
 
 name = os.listdir(path)
-print(len(name))
 
 for i in range(len(name)):
     if os.path.isfile(path + "/" + name[i]):
@@ -73,11 +72,16 @@ for i in range(len(name)):
 
 
 name = os.listdir(path)
-print(len(name))
+
+print("Content of Music directory:\n")
+for i in range(len(name)):
+    print(name[i])
+print('\n')
 
 
-del (splitmusic)
-print(name)
+
+
+
 for i in range(len(name)):
     wav = wave.open(path + "/" + name[i], mode="r")
     (nchannels, sampwidth, framerate, nframes, comptype, compname) = wav.getparams()
@@ -118,3 +122,9 @@ for i in range(len(name)):
     plt.clf()
     plt.close()
     # plt.show()
+
+for i in range(len(name)):
+    if os.path.isfile(path + "/" + name[i]):
+        splitmusic = name[i].rsplit('.',1)
+        if splitmusic[1] == "wav":
+            os.remove('Music/'+name[i])
