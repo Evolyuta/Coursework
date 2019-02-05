@@ -1,2 +1,2 @@
 a = 'Slipknot.Placebo.mp3.wav'
-print(a.split('.',-1))
+print(a.rsplit('.',1))

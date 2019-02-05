@@ -43,7 +43,7 @@ name = os.listdir(path)
 tempname = []
 for i in range(len(name)):
     if os.path.isfile(path + "/" + name[i]):
-        splitmusic = name[i].split('.')
+        splitmusic = name[i].rsplit('.')
         if splitmusic[-1] == "mp3":
             sound = AudioSegment.from_mp3(path + "/" + name[i])
             sound.export(path + "/" + splitmusic[0] + ".wav", format="wav")
@@ -53,12 +53,12 @@ print(len(name))
 
 for i in range(len(name)):
     if os.path.isfile(path + "/" + name[i]):
-        splitmusic = name[i].split('.')
+        splitmusic = name[i].rsplit('.')
         if splitmusic[-1] == "wav":
             tempname.append(name[i])
 name = tempname
 for i in range(len(name)):
-    splitmusic = name[i].split('.')
+    splitmusic = name[i].rsplit('.')
     name[i] = splitmusic[0]
 del (tempname)
 del (splitmusic)
