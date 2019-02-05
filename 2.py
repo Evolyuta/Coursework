@@ -6,4 +6,4 @@ name = os.listdir(path)
 
 print("Content of Music directory:\n")
 for i in range(len(name)):
-    print(name[i])
+    print(str(i) + '. ' + name[i])

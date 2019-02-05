@@ -8,6 +8,7 @@ import os
 import tkinter
 from tkinter import *
 
+
 types = {
     1: np.int8,
     2: np.int16,
@@ -37,9 +38,6 @@ def format_db(x, pos=None):
     return int(db)
 
 
-
-
-
 path = os.getcwd() + "/Music"
 name = os.listdir(path)
 
@@ -50,43 +48,42 @@ tempname = []
 
 for i in range(len(name)):
     if os.path.isfile(path + "/" + name[i]):
-        splitmusic = name[i].rsplit('.',1)
-        if splitmusic[-1] == "mp3":
+        split = name[i].rsplit('.', 1)
+        if split[-1] == "mp3":
             sound = AudioSegment.from_mp3(path + "/" + name[i])
-            sound.export(path + "/" + splitmusic[0] + ".wav", format="wav")
+            sound.export(path + "/" + split[0] + ".wav", format="wav")
 
+
+name = os.listdir(path)
 
 
 """Removing mp3 files"""
 
-name = os.listdir(path)
-
 for i in range(len(name)):
     if os.path.isfile(path + "/" + name[i]):
-        splitmusic = name[i].rsplit('.',1)
-        if splitmusic[1] == "mp3":
+        split = name[i].rsplit('.', 1)
+        if split[1] == "mp3":
             os.remove('Music/'+name[i])
 
 
-
-
-
 name = os.listdir(path)
+
+
+"""Display on music content"""
 
 print("Content of Music directory:\n")
 for i in range(len(name)):
-    print(name[i])
+    print(str(i+1) + '. ' + name[i])
 print('\n')
 
 
-
-
+"""Visualisation"""
 
 for i in range(len(name)):
     wav = wave.open(path + "/" + name[i], mode="r")
     (nchannels, sampwidth, framerate, nframes, comptype, compname) = wav.getparams()
 
-    print(nchannels, sampwidth, framerate, nframes, comptype, compname)
+    #print(nchannels, sampwidth, framerate, nframes, comptype, compname)
 
     duration = nframes / framerate
     w, h = 800, 450
@@ -116,15 +113,19 @@ for i in range(len(name)):
 
     axes.xaxis.set_major_formatter(ticker.FuncFormatter(format_time))
 
-    filenamepng=name[i].rsplit('.')[0];
-    plt.savefig(os.getcwd() + "/Visualization/" + filenamepng, dpi=400)
+    filename=name[i].rsplit('.')[0];
+    plt.savefig(os.getcwd() + "/Visualization/" + filename, dpi=400)
     plt.cla()
     plt.clf()
     plt.close()
+    print(filename + ' is ready')
     # plt.show()
+
+
+"""Removing wav files"""
 
 for i in range(len(name)):
     if os.path.isfile(path + "/" + name[i]):
-        splitmusic = name[i].rsplit('.',1)
-        if splitmusic[1] == "wav":
+        split = name[i].rsplit('.', 1)
+        if split[1] == "wav":
             os.remove('Music/'+name[i])
