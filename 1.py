@@ -75,20 +75,11 @@ for i in range(len(name)):
 name = os.listdir(path)
 print(len(name))
 
-#for i in range(len(name)):
- #   if os.path.isfile(path + "/" + name[i]):
-  #      splitmusic = name[i].rsplit('.',1)
-   #     if splitmusic[1] == "wav":
-    #        tempname.append(name[i])
-#name = tempname
-for i in range(len(name)):
-    splitmusic = name[i].rsplit('.')
-    name[i] = splitmusic[0]
-del (tempname)
+
 del (splitmusic)
 print(name)
 for i in range(len(name)):
-    wav = wave.open(path + "/" + name[i] + ".wav", mode="r")
+    wav = wave.open(path + "/" + name[i], mode="r")
     (nchannels, sampwidth, framerate, nframes, comptype, compname) = wav.getparams()
 
     print(nchannels, sampwidth, framerate, nframes, comptype, compname)
@@ -121,7 +112,8 @@ for i in range(len(name)):
 
     axes.xaxis.set_major_formatter(ticker.FuncFormatter(format_time))
 
-    plt.savefig(os.getcwd() + "/Visualization/" + name[i], dpi=400)
+    filenamepng=name[i].rsplit('.')[0];
+    plt.savefig(os.getcwd() + "/Visualization/" + filenamepng, dpi=400)
     plt.cla()
     plt.clf()
     plt.close()

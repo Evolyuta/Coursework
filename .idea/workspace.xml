@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d93e7293-8577-4e39-8945-8d42925e1f02" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Music/Oomph! - Bonobo.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Music/Oomph! - Brich Aus.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Music/Oomph! - Burn your eyes.wav" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/1.py" afterPath="$PROJECT_DIR$/1.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +16,8 @@
       <file leaf-file-name="1.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="79">
-              <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+            <state relative-caret-position="151">
+              <caret line="74" column="14" lean-forward="false" selection-start-line="74" selection-start-column="14" selection-end-line="74" selection-end-column="14" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
                 <element signature="e#197#249#0" expanded="false" />
@@ -279,8 +275,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+        <state relative-caret-position="151">
+          <caret line="74" column="14" lean-forward="false" selection-start-line="74" selection-start-column="14" selection-end-line="74" selection-end-column="14" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
             <element signature="e#197#249#0" expanded="false" />
