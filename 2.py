@@ -1,9 +1,4 @@
-import os
-
-path = os.getcwd() + "/Music"
-
-name = os.listdir(path)
-
-print("Content of Music directory:\n")
-for i in range(len(name)):
-    print(str(i) + '. ' + name[i])
+import re
+line = 'slava.ukaie'
+line = re.sub('[.]', '', line)
+print(line)

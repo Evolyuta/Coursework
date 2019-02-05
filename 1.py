@@ -7,6 +7,7 @@ import math
 import os
 import tkinter
 from tkinter import *
+import re
 
 
 types = {
@@ -113,7 +114,7 @@ for i in range(len(name)):
 
     axes.xaxis.set_major_formatter(ticker.FuncFormatter(format_time))
 
-    filename=name[i].rsplit('.')[0];
+    filename=re.sub('[.]','',name[i].rsplit('.',1)[0])
     plt.savefig(os.getcwd() + "/Visualization/" + filename, dpi=400)
     plt.cla()
     plt.clf()
