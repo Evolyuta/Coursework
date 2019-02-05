@@ -1,2 +1,2 @@
 import os
-print(os.getcwd())
+os.remove('Music/Oomph! - Bis Der Spiegel Zerbricht.mp3')
