@@ -38,29 +38,33 @@ def format_db(x, pos=None):
 
 
 """Список wav файлов"""
-pathmusic = "/home/evolyuta/PycharmProjects/Coursework/Music"
-namemusic = os.listdir(pathmusic)
-tempnamemusic = []
-for i in range(len(namemusic)):
-    if os.path.isfile(pathmusic + "/" + namemusic[i]):
-        splitmusicname = namemusic[i].split('.')
-        if splitmusicname[-1] == "mp3":
-            sound = AudioSegment.from_mp3(pathmusic + "/" + namemusic[i])
-            sound.export(pathmusic + "/" + splitmusicname[0] + ".wav", format="wav")
-for i in range(len(namemusic)):
-    if os.path.isfile(pathmusic + "/" + namemusic[i]):
-        splitmusicname = namemusic[i].split('.')
-        if splitmusicname[-1] == "wav":
-            tempnamemusic.append(namemusic[i])
-namemusic = tempnamemusic
-for i in range(len(namemusic)):
-    splitmusicname = namemusic[i].split('.')
-    namemusic[i] = splitmusicname[0]
-del (tempnamemusic)
-del (splitmusicname)
-print(namemusic)
-for i in range(len(namemusic)):
-    wav = wave.open(pathmusic + "/" + namemusic[i] + ".wav", mode="r")
+path = "/home/evolyuta/PycharmProjects/Coursework/Music"
+name = os.listdir(path)
+tempname = []
+for i in range(len(name)):
+    if os.path.isfile(path + "/" + name[i]):
+        splitmusic = name[i].split('.')
+        if splitmusic[-1] == "mp3":
+            sound = AudioSegment.from_mp3(path + "/" + name[i])
+            sound.export(path + "/" + splitmusic[0] + ".wav", format="wav")
+
+name = os.listdir(path)
+print(len(name))
+
+for i in range(len(name)):
+    if os.path.isfile(path + "/" + name[i]):
+        splitmusic = name[i].split('.')
+        if splitmusic[-1] == "wav":
+            tempname.append(name[i])
+name = tempname
+for i in range(len(name)):
+    splitmusic = name[i].split('.')
+    name[i] = splitmusic[0]
+del (tempname)
+del (splitmusic)
+print(name)
+for i in range(len(name)):
+    wav = wave.open(path + "/" + name[i] + ".wav", mode="r")
     (nchannels, sampwidth, framerate, nframes, comptype, compname) = wav.getparams()
 
     print(nchannels, sampwidth, framerate, nframes, comptype, compname)
@@ -93,7 +97,7 @@ for i in range(len(namemusic)):
 
     axes.xaxis.set_major_formatter(ticker.FuncFormatter(format_time))
 
-    plt.savefig(os.getcwd() + "/Visualization/" + namemusic[i], dpi=400)
+    plt.savefig(os.getcwd() + "/Visualization/" + name[i], dpi=400)
     plt.cla()
     plt.clf()
     plt.close()
