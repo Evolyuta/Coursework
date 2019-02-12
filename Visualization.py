@@ -75,7 +75,7 @@ name = os.listdir(path)
 print("Content of Music directory:\n")
 for i in range(len(name)):
     print(str(i+1) + '. ' + name[i])
-print('\n')
+print('\n\n')
 
 
 """Visualisation"""
@@ -106,7 +106,7 @@ for i in range(len(name)):
         if nchannels == 1:
             channel = channel - peak
 
-        axes = plt.subplot(2, 1, n + 1, axisbg="k")
+        axes = plt.subplot(2, 1, n + 1, facecolor="k")
         axes.plot(channel, "#00ced1")
         axes.yaxis.set_major_formatter(ticker.FuncFormatter(format_db))
         plt.grid(True, color='#e0ffff')
@@ -119,7 +119,7 @@ for i in range(len(name)):
     plt.cla()
     plt.clf()
     plt.close()
-    print(filename + ' is ready')
+    print(str(i+1)+'. '+filename + ' is ready')
     # plt.show()
 
 
