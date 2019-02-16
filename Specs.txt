@@ -1,0 +1,26 @@
+Adept
+
+Maximum db = -9.23762307148654
+Minimum db = -40.567414032041476
+Mean db = -15.98108448914243
+
+
+Scott Bradlee
+
+Maximum db = -13.300627607826849
+Minimum db = -45.25577624344591
+Mean db = -20.444415854366415
+
+
+Slayer
+
+Maximum db = -10.358911841124177
+Minimum db = -44.24568443128546
+Mean db = -17.505855511324945
+
+
+Noise MC
+
+Maximum db = -10.471979391527903
+Minimum db = -44.1502127765575
+Mean db = -17.82239049275944

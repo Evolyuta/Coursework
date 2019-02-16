@@ -15,29 +15,6 @@ types = {
     4: np.int32
 }
 
-
-def format_time(x, pos=None):
-    global duration, nframes, k, mins
-    progress = int(x / float(nframes) * duration * k)
-    mins, secs = divmod(progress, 60)
-    hours, mins = divmod(mins, 60)
-    out = "%d:%02d" % (mins, secs)
-    if hours > 0:
-        out = "%d:" % hours
-    return out
-
-
-def format_db(x, pos=None):
-    if pos == 0:
-        return ""
-    global peak
-    if x == 0:
-        return "-∞"
-
-    db = 20 * math.log10(abs(x) / float(peak))
-    return int(db)
-
-
 path = os.getcwd() + "/Music"
 name = os.listdir(path)
 
@@ -71,61 +48,74 @@ for i in range(len(name)):
     print(str(i + 1) + '. ' + name[i])
 print('\n\n')
 
+maxdirdb = []
+mindirdb = []
+meandirdb = []
+
 for i in range(len(name)):
+
+    filename = re.sub('[.]', '', name[i].rsplit('.', 1)[0])
+    print('\n\n' + str(i + 1) + '. ' + filename + ':\n')
+
     wav = wave.open(path + "/" + name[i], mode="r")
     (nchannels, sampwidth, framerate, nframes, comptype, compname) = wav.getparams()
     # число каналов, число байт на сэмпл, число вреймов в секунду, общее число фреймов, тип сжатия, имя типа сжатия
-
     # print(nchannels, sampwidth, framerate, nframes, comptype, compname)
 
     content = wav.readframes(nframes)
     samples = np.fromstring(content, dtype=types[sampwidth])
 
     duration = nframes / framerate
-    w = 800
-    k = int(nframes / w / 32)
+    countsamples = 61000
+    k = int(nframes / countsamples)
     peak = 256 ** sampwidth / 2
 
-    max = 0
-    min = 0
+    maxdb = []
+    mindb = []
 
-    positivedb = []
-    negativedb = []
+    db = []
 
     amplitude = []
 
     for n in range(nchannels):
+
         channel = samples[n::nchannels]
-        if nchannels == 1:
-            channel = channel - peak
+
+        # if nchannels == 1:
+        # channel = channel - peak
+
         channel = channel[0::k]
-        for l in range(len(channel)):
-            amplitude.append(channel[l])
+
+        for sample in channel:
+            amplitude.append(sample)
 
     for l in range(len(amplitude)):
         if abs(amplitude[l]) < 1e-303:
             amplitude[l] = 1e-304
-        if l != 0:
-            currdb = 20 * math.log10((abs(amplitude[l]) / abs(amplitude[l - 1])))
-            if abs(currdb)<1000:
-                if currdb < 0:
-                    negativedb.append(currdb)
-                else:
-                    positivedb.append(currdb)
+        currdb = 20 * math.log10(abs(amplitude[l]) / float(peak))
+        if abs(currdb) < 6000:
+            db.append(currdb)
 
-    for l in range(len(positivedb)):
-        if positivedb[l] > max:
-            max = positivedb[l]
+    db.sort()
 
-    for l in range(len(negativedb)):
-        if negativedb[l] < min:
-            min = negativedb[l]
+    for l in range(len(db)):
+        if l > countsamples*0.8:
+            maxdb.append(db[l])
+        elif l <= countsamples*0.2:
+            mindb.append(db[l])
 
-    print('max db =', max)
-    print('min db =', min)
+    print('Maximum db =', np.mean(maxdb))
+    print('Minimum db =', np.mean(mindb))
 
-    print('mean pdb =', np.mean(positivedb))
-    print('mean ndb =', np.mean(negativedb))
+    print('Mean db =', np.mean(db))
 
-    filename = re.sub('[.]', '', name[i].rsplit('.', 1)[0])
-    print(str(i + 1) + '. ' + filename + ' is ready\n')
+    maxdirdb.append(np.mean(maxdb))
+    mindirdb.append(np.mean(mindb))
+    meandirdb.append(np.mean(db))
+
+print('\n\n\nDirectory specifications:\n')
+
+print('Maximum db =', np.mean(maxdirdb))
+print('Minimum db =', np.mean(mindirdb))
+
+print('Mean db =', np.mean(meandirdb))

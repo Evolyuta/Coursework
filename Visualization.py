@@ -100,7 +100,6 @@ for i in range(len(name)):
         if nchannels == 1:
             channel = channel - peak
 
-        print(20 * math.log10((abs(channel[25000]) / float(peak))))
 
         axes = plt.subplot(2, 1, n + 1, facecolor="k")
         axes.plot(channel, "#00ced1")
@@ -120,8 +119,8 @@ for i in range(len(name)):
 
 """Removing wav files"""
 
-for i in range(len(name)):
+"""for i in range(len(name)):
     if os.path.isfile(path + "/" + name[i]):
         split = name[i].rsplit('.', 1)
         if split[1] == "wav":
-            os.remove('Music/' + name[i])
+            os.remove('Music/' + name[i])"""
