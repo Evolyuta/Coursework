@@ -68,6 +68,7 @@ for i in range(len(name)):
     duration = nframes / framerate
     countsamples = 61000
     k = int(nframes / countsamples)
+    #peak = 32768.0
     peak = 256 ** sampwidth / 2
 
     maxdb = []
@@ -99,10 +100,11 @@ for i in range(len(name)):
     db.sort()
 
     for l in range(len(db)):
-        if l > countsamples*0.8:
+        if l > countsamples * 0.8:
             maxdb.append(db[l])
-        elif l <= countsamples*0.2:
+        elif l <= countsamples * 0.2:
             mindb.append(db[l])
+
 
     print('Maximum db =', np.mean(maxdb))
     print('Minimum db =', np.mean(mindb))

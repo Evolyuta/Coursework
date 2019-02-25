@@ -1,15 +1,9 @@
-Adept
+Mozart
 
-Maximum db = -9.23762307148654
-Minimum db = -40.567414032041476
-Mean db = -15.98108448914243
+Maximum db = -18.528379142645136
+Minimum db = -51.67849915905061
+Mean db = -26.091955477699436
 
-
-Scott Bradlee
-
-Maximum db = -13.300627607826849
-Minimum db = -45.25577624344591
-Mean db = -20.444415854366415
 
 
 Slayer
@@ -19,8 +13,17 @@ Minimum db = -44.24568443128546
 Mean db = -17.505855511324945
 
 
-Noise MC
 
-Maximum db = -10.471979391527903
-Minimum db = -44.1502127765575
-Mean db = -17.82239049275944
+Eminem
+
+Maximum db = -10.022498908562863
+Minimum db = -42.09053626309468
+Mean db = -17.160786611894455
+
+
+
+Prodigy
+
+Maximum db = -12.150336055796775
+Minimum db = -43.46334540585328
+Mean db = -19.19048480493434
