@@ -110,7 +110,7 @@ for i in range(len(name)):
     axes.xaxis.set_major_formatter(ticker.FuncFormatter(format_time))
 
     filename = re.sub('[.]', '', name[i].rsplit('.', 1)[0])
-    plt.savefig(os.getcwd() + "/Visualization/" + filename, dpi=400)
+    plt.savefig(os.getcwd() + "/Visualization [USELESS]/" + filename, dpi=400)
     plt.cla()
     plt.clf()
     plt.close()

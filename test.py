@@ -1,18 +1,22 @@
-samples = [0,1,2,3,5,6,7,8]
+import csv
 
-nchannels = 2
-nframes = 2
-w = 800
-sampwidth = 2
+Class = ['Pop','Punk']
+ID = ['0','1']
 
-peak = 256 ** sampwidth / 2
+with open('employee_file.csv', mode='r') as csv_file:
+    csv_reader = csv.DictReader(csv_file)
+    line_count = 0
+    for row in csv_reader:
+        if line_count == 0:
+            line_count += 1
+        else:
+            line_count += 1
 
-for n in range(nchannels):
-    channel = samples[n::nchannels]
-    if nchannels == 1:
-        channel = channel - peak
-        channel = channel / 1.0
+print(line_count)
+
+with open('employee_file.csv', mode='a') as employee_file:
+    employee_writer = csv.writer(employee_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
 
-    print(channel)
-
+    for i in range(len(Class)):
+        employee_writer.writerow([ID[i],Class[i]])
