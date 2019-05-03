@@ -34,13 +34,13 @@ model.add(Activation('softmax'))
 
 model.compile(loss='categorical_crossentropy', metrics=['accuracy'], optimizer='adam')
 
-aTrain, aTest, bTrain, bTest = train_test_split(X, yy, test_size=0.4, random_state=233)
+aTrain, aTest, bTrain, bTest = train_test_split(X, yy, test_size=0.2, random_state=233)
 
 
 start = time.time()
-model.fit(aTrain, bTrain, batch_size=32, epochs=50, validation_data=(aTest, bTest))
-score, acc = model.evaluate(aTest, bTest, batch_size=16)
+model.fit(aTrain, bTrain, batch_size=32, epochs=500, validation_data=(aTest, bTest))
+# score, acc = model.evaluate(aTest, bTest, batch_size=16)
 #
 # print('Test score:', score)
-print('Test accuracy:', acc)
+# print('Test accuracy:', acc)
 print('Training took: %d seconds' % int(time.time() - start))

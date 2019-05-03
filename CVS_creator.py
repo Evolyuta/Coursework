@@ -1,6 +1,6 @@
 import csv
 import os
-from pydub import AudioSegment
+import shutil
 
 path = 'Music_mp3/'
 subdir = os.listdir(path)
@@ -22,47 +22,28 @@ else:
     with open('/home/evolyuta/Coursework/Music/train.csv', mode='a') as employee_file:
         employee_writer = csv.writer(employee_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         employee_writer.writerow(['ID', 'Class'])
-    counter=0
+    counter = 0
 
-
-# print(subdir)
-
-for k in range(len(subdir)):
-    name = os.listdir(path + subdir[k])
-    # print(name)
-
-    """Convert from mp3 to wav"""
-
-    for i in range(len(name)):
-        if os.path.isfile(path + subdir[k] + "/" + name[i]):
-            split = name[i].rsplit('.', 1)
-            if split[-1] == "mp3":
-                sound = AudioSegment.from_mp3(path + subdir[k] + "/" + name[i])
-                sound.export('/home/evolyuta/Coursework/Music/' + str(counter) + ".wav", format="wav")
-            ID.append(counter)
-            counter += 1
-            Class.append(subdir[k])
-
-"""Removing mp3 files"""
 
 for k in range(len(subdir)):
     name = os.listdir(path + subdir[k])
 
     for i in range(len(name)):
         if os.path.isfile(path + subdir[k] + "/" + name[i]):
-            split = name[i].rsplit('.', 1)
-            if split[-1] == "mp3":
-                os.remove(path + subdir[k] + "/" + name[i])
-
+            try:
+                counter += 1
+                shutil.copy(path + subdir[k] + "/" + name[i], '/home/evolyuta/Coursework/Music/' + str(counter) + ".mp3")
+                ID.append(counter)
+                print(counter)
+                Class.append('1' + str(subdir[k]))
+            except Exception as e:
+                print('Error in ', name[i])
 
 with open('/home/evolyuta/Coursework/Music/train.csv', mode='a') as employee_file:
     employee_writer = csv.writer(employee_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
-
     for i in range(len(Class)):
-        employee_writer.writerow([int(ID[i]),Class[i]])
-
-
+        employee_writer.writerow([int(ID[i]), Class[i]])
 
 print(Class)
 print(ID)

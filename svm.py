@@ -6,7 +6,7 @@ from sklearn.svm import SVC
 y = np.array(np.load('label.npy').tolist())
 X = np.array(np.load('feat.npy').tolist())
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=233)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=233)
 
 # Simple SVM
 clf = SVC(C=20.0, gamma=0.00001)

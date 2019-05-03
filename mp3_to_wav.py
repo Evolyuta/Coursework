@@ -1,8 +1,10 @@
 import os
 from pydub import AudioSegment
 
-path = '/home/evolyuta/Coursework/Music/Punk/'
+path = 'Music/'
 name = os.listdir(path)
+
+print(name)
 
 """Convert from mp3 to wav"""
 

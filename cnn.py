@@ -27,15 +27,15 @@ model.add(Dropout(0.5))
 model.add(Dense(class_count, activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
 
-X_train, X_test, y_train, y_test = train_test_split(X, yy, test_size=0.4, random_state=233)
+X_train, X_test, y_train, y_test = train_test_split(X, yy, test_size=0.2, random_state=233)
 
 X_train = np.expand_dims(X_train, axis=2)
 X_test = np.expand_dims(X_test, axis=2)
 
 start = time.time()
-model.fit(X_train, y_train,  batch_size=32, epochs=50)
-score, acc = model.evaluate(X_test, y_test, batch_size=16)
+model.fit(X_train, y_train,  batch_size=32, epochs=500)
+# score, acc = model.evaluate(X_test, y_test, batch_size=16)
 #
 # print('Test score:', score)
-print('Test accuracy:', acc)
+# print('Test accuracy:', acc)
 print('Training took: %d seconds' % int(time.time() - start))
